@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/545dba8608.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="mainElevator">
+        <div class="subBlock  subBlock1 ">
+            <div class="block--1">
+                <div class="elevator1"></div>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class=" switchs switch1" onchange="checks('1')">
+                <span class="slider round"></span>
+            </label>
+
+        </div>
+        <div class="subBlock  subBlock2">
+            <div class="block--2">
+                <div class="elevator2"></div>
+                
+            </div>
+            <label class="switch">
+                <input type="checkbox" class=" switchs switch2" onchange="checks('2')">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="subBlock  subBlock3">
+            <div class="block--3">
+                <div class="elevator3"></div>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class=" switchs switch3" onchange="checks('3')">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="subBlock  subBlock4">
+            <div class="block--4">
+                <div class="elevator4"></div>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class=" switchs switch4" onchange="checks('4')">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="subBlock  subBlock5">
+            <div class="block--5">
+                <div class="elevator5"></div>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class=" switchs switch5" onchange="checks('5')">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="block-buttons">
+            <div class="maintenance"><span >MAINTENANCE</span></div>
+            <div class="floor-1 floor">
+                <div class="floorNo 1"><span>1</span></div>
+                <div class="up-btn"><button class="btns btn1up" onclick="upbtn('1')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+            </div>
+            <div class="floor-2 floor">
+                <div class="floorNo 2"><span>2</span></div>
+                <div class="up-btn"><button class="btns btn2up" onclick="upbtn('2')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+               <div class="down-btn"> <button class="btns btn2dwn" onclick="dwnbtn('2')"><i class="fa-solid fa-circle-down"></i></button></div>
+            </div>
+            <div class="floor-3 floor">
+                <div class="floorNo 3"><span>3</span></div>
+                <div class="up-btn"><button class="btns btn3up"onclick="upbtn('3')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+               <div class="down-btn"> <button class="btns btn3dwn" onclick="dwnbtn('3')"><i class="fa-solid fa-circle-down"></i></button></div>
+            </div>
+            <div class="floor-4 floor">
+                <div class="floorNo 4"><span>4</span></div>
+                <div class="up-btn"><button class="btns btn4Up" onclick="upbtn('4')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+               <div class="down-btn"> <button class="btns btn4dwn" onclick="dwnbtn('4')"><i class="fa-solid fa-circle-down"></i></button></div>
+            </div>
+            <div class="floor-5 floor">
+                <div class="floorNo 5"><span>5</span></div>
+               <div class="down-btn"> <button class="btns btn5dwn" onclick="dwnbtn('5')"> <i class="fa-solid fa-circle-down"></i></button></div>
+            </div>
+
+            <!-- <div class="buttons"></div> -->
+        </div>
+    </div>
+    <script src="elevator.js"></script>
+</body>
+</html>

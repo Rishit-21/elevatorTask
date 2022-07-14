@@ -1,0 +1,218 @@
+.mainElevator {
+  background-color: #005868;
+  height: 868px;
+  width: 1904px;
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.mainElevator .subBlock {
+  width: 230px;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0%;
+}
+.mainElevator .block--1 {
+  background-color: #acdeff;
+  width: 90%;
+  height: 740px;
+  border: solid black;
+  align-items: end;
+  display: grid;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: center;
+  justify-items: center;
+}
+.mainElevator .block--1 .elevator1 {
+  background-color: #61686d;
+  width: 136px;
+  height: 194px;
+}
+.mainElevator .block--2 {
+  background-color: #acdeff;
+  width: 90%;
+  height: 740px;
+  border: solid black;
+  align-items: end;
+  display: grid;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: center;
+  justify-items: center;
+}
+.mainElevator .block--2 .elevator2 {
+  background-color: #61686d;
+  width: 136px;
+  height: 194px;
+}
+.mainElevator .block--3 {
+  background-color: #acdeff;
+  width: 90%;
+  height: 740px;
+  border: solid black;
+  align-items: end;
+  display: grid;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: center;
+  justify-items: center;
+}
+.mainElevator .block--3 .elevator3 {
+  background-color: #61686d;
+  width: 136px;
+  height: 194px;
+}
+.mainElevator .block--4 {
+  background-color: #acdeff;
+  width: 90%;
+  height: 740px;
+  border: solid black;
+  align-items: end;
+  display: grid;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: center;
+  justify-items: center;
+}
+.mainElevator .block--4 .elevator4 {
+  background-color: #61686d;
+  width: 136px;
+  height: 194px;
+}
+.mainElevator .block--5 {
+  background-color: #acdeff;
+  width: 90%;
+  height: 740px;
+  border: solid black;
+  align-items: end;
+  display: grid;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: center;
+  justify-items: center;
+}
+.mainElevator .block--5 .elevator5 {
+  background-color: #61686d;
+  width: 136px;
+  height: 194px;
+}
+.mainElevator .block-buttons {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: stretch;
+  height: 800px;
+}
+.mainElevator .block-buttons .maintenance span {
+  background-color: black;
+  color: white;
+  text-align: right;
+  width: 100%;
+  font-size: small;
+  border: solid black;
+}
+.mainElevator .block-buttons .floor {
+  display: flex;
+  justify-content: space-between;
+  margin: 44%;
+}
+.mainElevator .block-buttons .floor .floorNo {
+  background-color: white;
+  color: #005868;
+  border: solid black;
+  border-radius: 500em;
+  font-size: 20px;
+  padding: 1%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  margin-right: 20px;
+}
+.mainElevator .block-buttons .floor .btns {
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  background-color: #005868;
+  color: white;
+  font-size: 25px;
+}
+
+.action {
+  background-color: #005868;
+  color: white;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-grid;
+  width: 60px;
+  height: 34px;
+  margin-top: 15px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 50px;
+  height: 50px;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  width: 88%;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  width: 40%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}/*# sourceMappingURL=style.css.map */
