@@ -32,7 +32,8 @@
 .mainElevator .block--1 .elevator1 {
   background-color: #61686d;
   width: 136px;
-  height: 194px;
+  height: 145px;
+  border: solid black;
 }
 .mainElevator .block--2 {
   background-color: #acdeff;
@@ -50,7 +51,8 @@
 .mainElevator .block--2 .elevator2 {
   background-color: #61686d;
   width: 136px;
-  height: 194px;
+  height: 145px;
+  border: solid black;
 }
 .mainElevator .block--3 {
   background-color: #acdeff;
@@ -68,7 +70,8 @@
 .mainElevator .block--3 .elevator3 {
   background-color: #61686d;
   width: 136px;
-  height: 194px;
+  height: 145px;
+  border: solid black;
 }
 .mainElevator .block--4 {
   background-color: #acdeff;
@@ -86,7 +89,8 @@
 .mainElevator .block--4 .elevator4 {
   background-color: #61686d;
   width: 136px;
-  height: 194px;
+  height: 145px;
+  border: solid black;
 }
 .mainElevator .block--5 {
   background-color: #acdeff;
@@ -104,7 +108,8 @@
 .mainElevator .block--5 .elevator5 {
   background-color: #61686d;
   width: 136px;
-  height: 194px;
+  height: 145px;
+  border: solid black;
 }
 .mainElevator .block-buttons {
   display: flex;

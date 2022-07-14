@@ -90,95 +90,129 @@ let floor =[{floor:1 ,checked:false},{floor:2,checked:false},{floor:3,checked:fa
 // display(array)
 // buttons(floor)
 
+const liftMovments = function(i){
+    console.log('hello')
+    console.log(array.map(el=>el.floor))
+    // if(call==0){
+    //     for(let id =array.length;id>=i;id--){
+    //         marginbottom=Number(margin*i)
+    //         margintop=740-marginbottom;
+    //            console.log(document.querySelector(`.elevator${id}`))
+    //            document.querySelector(`.elevator${id}`).style.marginTop=`${margintop}px`
+    //            document.querySelector(`.elevator${id}`).style.marginBottom=`${marginbottom}px`
+    //            array[id-1].floor=i
+    //            console.log(array)
+    //        break;
+    //    }
+    //    call=1
+    // }
+        var closest = array.map(el=>el.floor).reduce(function(prev, curr) {
+            return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+          });
+          let falseLift = array.filter(el=>el.checked==false)
+
+          console.log(closest)
+        for(let el of array){
+            floors =Math.abs(i-el.floor)
+            if(falseLift.length==1){
+                for(let fl of falseLift){
+                    if(fl.id==el.id){
+                        if(closest<=el.floor){
+                            for(let id =el.id;id>=el.id;id--){
+                                marginbottom=Number(margin*i)
+                                margintop=740-marginbottom;
+                                   console.log(document.querySelector(`.elevator${el.id}`))
+                                   document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
+                                   document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
+                                   array[id-1].floor=i
+                                   console.log(array)
+                              
+                           }
+            
+                           break;
+                        }
+
+                    }
+                }
+
+            }
+            else if(closest==el.floor && el.checked==false){
+                console.log(el.floor)
+                for(let id =el.id;id>=el.id;id--){
+                    marginbottom=Number(margin*i)
+                    margintop=740-marginbottom;
+                       console.log(document.querySelector(`.elevator${el.id}`))
+                       document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
+                       document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
+                       array[id-1].floor=i
+                       console.log(array)
+                  
+               }
+
+               break;
+            }
+            
+        }
+        call=1
+
+    
+
+}
 
 const upbtn=function(i){
     console.log('hello')
-    if(call==0){
-        for(let id =array.length;id>=i;id--){
-            marginbottom=Number(margin*i)
-            margintop=740-marginbottom;
-           if(i!=1){
-               console.log(document.querySelector(`.elevator${id}`))
-               document.querySelector(`.elevator${id}`).style.marginTop=`${margintop}px`
-               document.querySelector(`.elevator${id}`).style.marginBottom=`${marginbottom}px`
-               array[id-1].floor=i
-               floor[i].checked=true
-               console.log(array)
-           }
-           else{
-               document.querySelector(`.elevator${id}`).style.marginTop=`546px`
-               array[id].floor=i
+    // if(call==0){
+    //     for(let id =array.length;id>=i;id--){
+    //         marginbottom=Number(margin*i)
+    //         margintop=740-marginbottom;
+    //        if(i!=1){
+    //            console.log(document.querySelector(`.elevator${id}`))
+    //            document.querySelector(`.elevator${id}`).style.marginTop=`${margintop}px`
+    //            document.querySelector(`.elevator${id}`).style.marginBottom=`${marginbottom}px`
+    //            array[id-1].floor=i
+    //            floor[i].checked=true
+    //            console.log(array)
+    //        }
+    //        else{
+    //            document.querySelector(`.elevator${id}`).style.marginTop=`546px`
+    //            array[id].floor=i
 
-           }
-           break;
+    //        }
+    //        break;
 
-       }
-       call=1
-    }
-    else if(call==1){
-        let floors
-        for(let el of array){
-            floors =Math.abs(i-el.floor)
-            if(floors==1){
-                console.log(el.floor)
-                for(let id =el.id;id>=el.id;id--){
-                    marginbottom=Number(margin*i)
-                    margintop=740-marginbottom;
-                       console.log(document.querySelector(`.elevator${el.id}`))
-                       document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
-                       document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
-                       array[id-1].floor=i
-                       console.log(array)
+    //    }
+    //    call=1
+    // }
+        // var closest = array.map(el=>el.floor).reduce(function(prev, curr) {
+        //     return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+        //   });
+        // let floors
+        // for(let el of array){
+        //     //floors =Math.abs(i-el.floor)
+        //     if(closest==el.floor){
+        //         console.log(el.floor)
+        //         for(let id =el.id;id>=el.id;id--){
+        //             marginbottom=Number(margin*i)
+        //             margintop=740-marginbottom;
+        //                console.log(document.querySelector(`.elevator${el.id}`))
+        //                document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
+        //                document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
+        //                array[id-1].floor=i
+        //                console.log(array)
                   
-               }
+        //        }
 
-               break;
-            }
-        }
-        call=1
+        //        break;
+        //     }
+        // }
+        // call=1
+        liftMovments(i)
 
-    }
+    
     
 }
 const dwnbtn=function(i){
-    console.log('hello')
-    if(call==0){
-        for(let id =array.length;id>=i;id--){
-            marginbottom=Number(margin*i)
-            margintop=740-marginbottom;
-               console.log(document.querySelector(`.elevator${id}`))
-               document.querySelector(`.elevator${id}`).style.marginTop=`${margintop}px`
-               document.querySelector(`.elevator${id}`).style.marginBottom=`${marginbottom}px`
-               array[id-1].floor=i
-               console.log(array)
-           break;
-       }
-       call=1
-    }
-    else if(call==1){
-        let floors
-        for(let el of array){
-            floors =Math.abs(i-el.floor)
-            if(floors==1){
-                console.log(el.floor)
-                for(let id =el.id;id>=el.id;id--){
-                    marginbottom=Number(margin*i)
-                    margintop=740-marginbottom;
-                       console.log(document.querySelector(`.elevator${el.id}`))
-                       document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
-                       document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
-                       array[id-1].floor=i
-                       console.log(array)
-                  
-               }
-
-               break;
-            }
-        }
-        call=1
-
-    }
-    
+    liftMovments(i)
 }
 
 
@@ -188,8 +222,13 @@ const maintain = function(){
         if(el.checked==true){
             console.log( document.querySelector(`.elevator${el.id}`))
 
-            document.querySelector(`.elevator${el.id}`).style.marginTop='546px'
+            document.querySelector(`.elevator${el.id}`).style.marginTop='592px'
+            document.querySelector(`.elevator${el.id}`).style.marginBottom='148px'
             document.querySelector(`.elevator${el.id}`).style.border='solid red'
+        }
+        if(el.checked==false){
+            document.querySelector(`.elevator${el.id}`).style.border='solid black'
+
         }
     })
 }
