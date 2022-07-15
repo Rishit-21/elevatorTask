@@ -39,6 +39,7 @@ let marginbottom=0
 let margintop=740
 let margin=148
 
+let animation=null;
 
 let array = [
     {id:1,lift:1,checked:false,floor:1},
@@ -49,246 +50,145 @@ let array = [
 ];
 
 let floor =[{floor:1 ,checked:false},{floor:2,checked:false},{floor:3,checked:false},{floor:4,checked:false},{floor:5,checked:false}]
-// const display = function(array){
-//     array.forEach(items => {
-//         console.log(items)
-//         const html=` <div class="subBlock  subBlock${items.id} ">
-//         <div class="block--${items.id}">
-//             <div class="elevator${items.id}"></div>
-//         </div>
-//         <label class="switch">
-//             <input type="checkbox" class="uyiyuiuyi switchs switch${items.id}" ${items.checked ? 'checked':""} onchange="alert('hy')">
-//             <span class="slider round"></span>
-//         </label>`
-//         document.querySelector('.mainElevator').innerHTML(html);        
-//     });
-// }
 
-// const buttons = function(){
-//     floor.forEach(fl=>{
-//         if(fl.floor==1|| fl.floor==5){
-//             if(fl.floor==1){
-//                 const html1 = `<div class="floor-${fl.floor} floor">
-//                 <div class="floorNo ${fl.floor}"><span>${fl.floor}</span></div>
-//                 <div class="up-btn"><button class="btns btn${fl.floor}up"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
-//             </div>`
-//             }
-//             else{
-//                 const htnl5 =`<div class="floor-${fl.floor} floor">
-//                 <div class="floorNo ${fl.floor}"><span>${fl.floor}</span></div>
-//                <div class="down-btn"> <button class="btns btn${fl.floor}dwn"> <i class="fa-solid fa-circle-down"></i></button></div>
-//             </div>`
-//             }
-//         }
-//         const flHtml=`<div class="floor-${fl.floor} floor">
-//         <div class="floorNo ${fl.floor}"><span>${fl.floor}</span></div>
-//         <div class="up-btn"><button class="btns btn${fl.floor}up"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
-//        <div class="down-btn"> <button class="btns btn${fl.floor}dwn"><i class="fa-solid fa-circle-down"></i></button></div>
-//     </div>`
-//     })
-// }
-// display(array)
-// buttons(floor)
 
 const liftMovments = function(i){
-    console.log('hello')
-    console.log(array.map(el=>el.floor))
-    // if(call==0){
-    //     for(let id =array.length;id>=i;id--){
-    //         marginbottom=Number(margin*i)
-    //         margintop=740-marginbottom;
-    //            console.log(document.querySelector(`.elevator${id}`))
-    //            document.querySelector(`.elevator${id}`).style.marginTop=`${margintop}px`
-    //            document.querySelector(`.elevator${id}`).style.marginBottom=`${marginbottom}px`
-    //            array[id-1].floor=i
-    //            console.log(array)
-    //        break;
-    //    }
-    //    call=1
-    // }
         var closest = array.map(el=>el.floor).reduce(function(prev, curr) {
             return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
           });
-          let falseLift = array.filter(el=>el.checked==false)
-
-          console.log(closest)
         for(let el of array){
-            floors =Math.abs(i-el.floor)
-            if(falseLift.length==1){
-                for(let fl of falseLift){
-                    if(fl.id==el.id){
-                        if(closest<=el.floor){
-                            for(let id =el.id;id>=el.id;id--){
-                                marginbottom=Number(margin*i)
-                                margintop=740-marginbottom;
-                                   console.log(document.querySelector(`.elevator${el.id}`))
-                                   document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
-                                   document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
-                                   array[id-1].floor=i
-                                   console.log(array)
-                              
-                           }
-            
-                           break;
-                        }
-
-                    }
-                }
-
-            }
-            else if(closest==el.floor && el.checked==false){
+             if(closest==el.floor && el.checked==false){
                 console.log(el.floor)
                 for(let id =el.id;id>=el.id;id--){
                     marginbottom=Number(margin*i)
                     margintop=740-marginbottom;
-                       console.log(document.querySelector(`.elevator${el.id}`))
-                       document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
-                       document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
-                       array[id-1].floor=i
-                       console.log(array)
-                  
+                    var posbtm =Number(margin*el.floor) ; 
+                    var postop= 740-posbtm;
+                    let n=el.floor
+                    let mb=posbtm
+                    let mbt=postop
+                   
+                    console.log("cur",postop, posbtm)
+                   
+
+                    clearInterval(animation);
+                    animation= setInterval(frame, 0);
+                    function frame() {
+                      if (postop == margintop || posbtm==marginbottom) {
+                        if(posbtm==marginbottom){
+                            if(Number(mb)==posbtm){
+                                mb+=148
+                                document.querySelector(`.el${el.id}`).value=`${n}`
+                                n++;
+                                console.log(n)
+                              
+                            }
+                        }
+                        else{
+                            if(Number(mbt)==postop){
+                                mbt+=148
+                                n--;
+                                document.querySelector(`.el${el.id}`).value=`${n}`
+                                console.log(n)
+                              
+                            }
+                        }
+                        clearInterval(animation);
+                      } 
+                      else {
+                            if(postop > margintop){
+                                if(Number(mb)==posbtm){
+                                  mb+=148
+                                  document.querySelector(`.el${el.id}`).value=`${n}`
+                                  n++;
+                                  console.log(n)
+                                
+                              }
+                                postop--; 
+                                posbtm++;
+                           
+                                document.querySelector(`.elevator${el.id}`).style.marginTop=`${postop}px`
+                                document.querySelector(`.elevator${el.id}`).style.marginBottom=`${posbtm}px`
+                        
+                            }
+                            else{
+                                if(Number(mbt)==postop){
+                                    mbt+=148
+                                    n--;
+                                    document.querySelector(`.el${el.id}`).value=`${n}`
+                                    console.log(n)
+                                  
+                                }
+                                postop++; 
+                                posbtm--;
+            
+                                document.querySelector(`.elevator${el.id}`).style.marginTop=`${postop}px`
+                                document.querySelector(`.elevator${el.id}`).style.marginBottom=`${posbtm}px`
+                    
+                            }
+                            array[id-1].floor=i
+                     
+                      }
+                      
+                    }
                }
 
                break;
             }
             
         }
-        call=1
+        
 
     
 
 }
 
 const upbtn=function(i){
-    console.log('hello')
-    // if(call==0){
-    //     for(let id =array.length;id>=i;id--){
-    //         marginbottom=Number(margin*i)
-    //         margintop=740-marginbottom;
-    //        if(i!=1){
-    //            console.log(document.querySelector(`.elevator${id}`))
-    //            document.querySelector(`.elevator${id}`).style.marginTop=`${margintop}px`
-    //            document.querySelector(`.elevator${id}`).style.marginBottom=`${marginbottom}px`
-    //            array[id-1].floor=i
-    //            floor[i].checked=true
-    //            console.log(array)
-    //        }
-    //        else{
-    //            document.querySelector(`.elevator${id}`).style.marginTop=`546px`
-    //            array[id].floor=i
-
-    //        }
-    //        break;
-
-    //    }
-    //    call=1
-    // }
-        // var closest = array.map(el=>el.floor).reduce(function(prev, curr) {
-        //     return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
-        //   });
-        // let floors
-        // for(let el of array){
-        //     //floors =Math.abs(i-el.floor)
-        //     if(closest==el.floor){
-        //         console.log(el.floor)
-        //         for(let id =el.id;id>=el.id;id--){
-        //             marginbottom=Number(margin*i)
-        //             margintop=740-marginbottom;
-        //                console.log(document.querySelector(`.elevator${el.id}`))
-        //                document.querySelector(`.elevator${el.id}`).style.marginTop=`${margintop}px`
-        //                document.querySelector(`.elevator${el.id}`).style.marginBottom=`${marginbottom}px`
-        //                array[id-1].floor=i
-        //                console.log(array)
-                  
-        //        }
-
-        //        break;
-        //     }
-        // }
-        // call=1
-        liftMovments(i)
-
     
-    
+    document.querySelector('.up-btn').classList.add('action')
+    document.querySelector ('.down-btn').classList.remove('action')
+        liftMovments(i) 
 }
 const dwnbtn=function(i){
+    document.querySelector('.up-btn').classList.remove('action')
+    document.querySelector ('.down-btn').classList.add('action')
     liftMovments(i)
 }
 
 
 const maintain = function(){
-    array.forEach(el=>{
-        console.log(el)
+    for(let el of array){
+        
         if(el.checked==true){
-            console.log( document.querySelector(`.elevator${el.id}`))
 
             document.querySelector(`.elevator${el.id}`).style.marginTop='592px'
             document.querySelector(`.elevator${el.id}`).style.marginBottom='148px'
-            document.querySelector(`.elevator${el.id}`).style.border='solid red'
+            document.querySelector(`.elevator${el.id}`).style.border=' red'
+            document.querySelector(`.elevator${el.id}`).style.opacity='0.3'
+            document.querySelector(`.el${el.id}`).value=`1`
+            el.floor=10000000000000;
+            //break
         }
-        if(el.checked==false){
+        else if(el.checked==false){
             document.querySelector(`.elevator${el.id}`).style.border='solid black'
-
-        }
-    })
+            document.querySelector(`.elevator${el.id}`).style.opacity='0.8'
+          if(el.floor==10000000000000){
+            el.floor=1
+          }
+          else{
+            el.floor=el.floor
+          }
+        }  
+    }
 }
 
 function checks(i){
-    console.log(array)
+    
     const index = array.findIndex(x=> x.id == i)
     array[index].checked=!array[index].checked
     maintain()
 }
 
-
-    // floor5dwn.addEventListener('click', function(){
-       
-    //     elevator1.style.marginBottom='740px'
-    //     elevator1.style.marginTop='0px'
-    // })
-    
-    // floor4dwn.addEventListener('click', function(){
-       
-    //     elevator1.style.marginBottom='592px'
-    //     elevator1.style.marginTop='148px'
-    // })
-    
-    // floor4Up.addEventListener('click', function(){
-       
-    //     elevator1.style.marginBottom='592px'
-    //     elevator1.style.marginTop='148px'
-    // })
-    
-    // floor3dwn.addEventListener('click', function(){
-      
-    //     elevator1.style.marginBottom='444px'
-    //     elevator1.style.marginTop='296px'
-    // })
-    
-    // floor3Up.addEventListener('click', function(){
-       
-    //     elevator1.style.marginBottom='444px'
-    //     elevator1.style.marginTop='296px'
-    // })
-    
-    // floor2dwn.addEventListener('click', function(){
-     
-    //     elevator1.style.marginBottom='296px'
-    //     elevator1.style.marginTop='440px'
-    // })
-    
-    // floor2Up.addEventListener('click', function(){
-       
-    //     elevator1.style.marginBottom='296px'
-    //     elevator1.style.marginTop='440px'
-    // })
-    
-    // floor1Up.addEventListener('click', function(){
-        
-    //     //elevator1.style.marginBottom='0'
-    //     elevator1.style.marginTop='546px'
-    // })
-    // call=1
 
 
 
