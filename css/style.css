@@ -37,13 +37,24 @@
 }
 .mainElevator .blockss .el input {
   text-align: center;
-  width: 130px;
-  height: 142px;
+  width: 50px;
+  height: 50px;
   align-items: center;
   margin: auto;
-  background-color: #61686d;
+  background-color: none;
   border: none;
   color: white;
+}
+.mainElevator .blockss .el .rightDoor {
+  background-color: black;
+  width: 75px;
+  height: 145px;
+  float: right;
+}
+.mainElevator .blockss .el .leftDoor {
+  background-color: black;
+  width: 75px;
+  height: 145px;
 }
 .mainElevator .block-buttons {
   display: flex;

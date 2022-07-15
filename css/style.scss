@@ -35,17 +35,29 @@
             height: 145px;
             border: solid black;
             opacity: 0.8;
+            //display: flex;
             input{
                 text-align: center;
-                width: 130px;
-                height: 142px;
+                width: 50px;
+                height: 50px;
                 align-items: center;
                 margin: auto;
-                background-color: #61686d;
+                background-color: none;
                 border: none;
                 color: white;
             }
-           
+            .rightDoor{
+                background-color: black;
+                width: 75px;
+                height: 145px;
+                float: right;
+            }
+            .leftDoor{
+                background-color: black;
+                width: 75px;
+                height: 145px;
+
+            }
     
         }
     }
