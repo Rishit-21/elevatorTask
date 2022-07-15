@@ -16,212 +16,37 @@
         padding: 0%;
     }
     
-    // .el{
-    //     div {
-    //         width: 100px;
-    //         height: 100px;
-    //         background-color: red;
-    //         position: relative;
-    //         animation-name: example;
-    //         animation-duration: 4s;
-    //         animation-iteration-count: 3;
-    //       }
-          
-    //       @keyframes example {
-    //         0%   {background-color:red; left:0px; top:0px;}
-    //         25%  {background-color:yellow; left:200px; top:0px;}
-    //         50%  {background-color:blue; left:200px; top:200px;}
-    //         75%  {background-color:green; left:0px; top:200px;}
-    //         100% {background-color:red; left:0px; top:0px;}
-    //       }
-    // }
+    .blockss{
+        background-color: #acdeff;
+        width: 90%;
+        height: 740px;
+        //border: solid black;
+        align-items: end;
+        display: grid;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: stretch;
+        justify-content: center;
+        justify-items: center;
 
-    // .block--1{
-        
-    //     background-color: #acdeff;
-        
-    //     width: 170px;
-    //     height: 500px;
-    //     border: solid black;
-        
-    //     // align-items: center;
-    //     // display: grid;
-    //     // flex-direction: column;
-    //     // flex-wrap: nowrap;
-    //     // align-content: stretch;
-    //     // justify-content: center;
-    //     // justify-items: center;
+        .el{
+            background-color: #61686d;
+            width: 136px;
+            height: 145px;
+            border: solid black;
+            opacity: 0.8;
+            input{
+                text-align: center;
+                width: 130px;
+                height: 142px;
+                align-items: center;
+                margin: auto;
+                background-color: #61686d;
+                border: none;
+                color: white;
+            }
+           
     
-    //     .elevator1{
-    //         background-color: #61686d;
-    //         width: 150px;
-    //         height: 100px;
-    //         border: solid black;
-    //         margin-top: 400px;          
-    //        margin-left: 5px;
-    //        margin-right: 5px;
-
-    //     }
-    // }
-    .block--1{
-        background-color: #acdeff;
-        width: 90%;
-        height: 740px;
-        //border: solid black;
-        align-items: end;
-        display: grid;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: stretch;
-        justify-content: center;
-        justify-items: center;
-        .elevator1{
-            background-color: #61686d;
-            width: 136px;
-            height: 145px;
-            border: solid black;
-            opacity: 0.8;
-            input{
-                text-align: center;
-                width: 130px;
-                height: 142px;
-                align-items: center;
-                margin: auto;
-                background-color: #61686d;
-                border: none;
-                color: white;
-            }
-           
-
-        }
-    }
-    .block--2{
-        background-color: #acdeff;
-        width: 90%;
-        height: 740px;
-        //border: solid black;
-        align-items: end;
-        display: grid;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: stretch;
-        justify-content: center;
-        justify-items: center;
-        .elevator2{
-            background-color: #61686d;
-            width: 136px;
-            height: 145px;
-            border: solid black;
-            opacity: 0.8;
-            input{
-                text-align: center;
-                width: 130px;
-                height: 142px;
-                align-items: center;
-                margin: auto;
-                background-color: #61686d;
-                border: none;
-                color: white;
-            }
-           
-
-        }
-    }
-    .block--3{
-        background-color: #acdeff;
-        width: 90%;
-        height: 740px;
-       // border: solid black;
-        align-items: end;
-        display: grid;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: stretch;
-        justify-content: center;
-        justify-items: center;
-        .elevator3{
-            background-color: #61686d;
-            width: 136px;
-            height: 145px;
-            border: solid black;
-            opacity: 0.8;
-            input{
-                text-align: center;
-                width: 130px;
-                height: 142px;
-                align-items: center;
-                margin: auto;
-                background-color: #61686d;
-                border: none;
-                color: white;
-            }
-           
-
-        }
-    }
-    .block--4{  
-        background-color: #acdeff;
-        width: 90%;
-        height: 740px;
-        //border: solid black;
-        align-items: end;
-        display: grid;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: stretch;
-        justify-content: center;
-        justify-items: center;
-        .elevator4{
-            background-color: #61686d;
-            width: 136px;
-            height: 145px;
-            border: solid black;
-            opacity: 0.8;
-            input{
-                text-align: center;
-                width: 130px;
-                height: 142px;
-                align-items: center;
-                margin: auto;
-                background-color: #61686d;
-                border: none;
-                color: white;
-            }
-           
-
-        }
-
-    }
-    .block--5{
-        background-color: #acdeff;
-        width: 90%;
-        height: 740px;
-        //border: solid black;
-        align-items: end;
-        display: grid;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: stretch;
-        justify-content: center;
-        justify-items: center;
-        .elevator5{
-            background-color: #61686d;
-            width: 136px;
-            height: 145px;
-            border: solid black;
-            opacity: 0.8;
-            input{
-                text-align: center;
-                width: 130px;
-                height: 142px;
-                align-items: center;
-                margin: auto;
-                background-color: #61686d;
-                border: none;
-                color: white;
-
-            }
-         
         }
     }
     .block-buttons{
@@ -232,30 +57,27 @@
         align-items: center;
         height: 800px;
         width: 150px;
-        //align-content: flex-end;
+       
 
         .maintenance{
             span{
-                //background-color: black;
+                
                 color: white;
                 text-align: right;
                 width: 100%;
                 font-size: small;
-                //border: solid black;
+                
             }
-
-            // line-height: 2px;
-            
         }
     
         .floor{
             display: flex;
-            // justify-content: space-between;
+            
             display: flex;
             justify-content: center;
             flex-wrap: nowrap;
             align-items: baseline;
-            //margin: 30%;
+          
             .floorNo{
                 background-color: white;
                 color: #005868;
@@ -270,7 +92,6 @@
                 margin-right:20px ;
                 float: right;
             }
-
 
             .btns{
                 border-top-width: 0px;
