@@ -42,13 +42,70 @@ let margin=148
 let animation=null;
 let animationDoors=null;
 
-let array = [
-    {id:1,lift:1,checked:false,floor:1},
-    {id:2,lift:2,checked:false,floor:1},
-    {id:3,lift:3,checked:false,floor:1},
-    {id:4,lift:4,checked:false,floor:1},
-    {id:5,lift:5,checked:false,floor:1},
-];
+let ids=0;
+
+let numLift = prompt("Enter number of lift you want",3)
+let numfloor=prompt("Enter number of floor you want",7)
+
+let htmlfl
+
+let array = [];
+
+document.querySelector('.mainElevator').innerHTML=''
+let liftheight=Number((numfloor*150));
+let flheight =(numfloor*150);
+const displaylifts = function(){
+    
+    for(let t=1;t<=numLift;t++){
+        let html = `<div class="subBlock  subBlock${t}">
+        <div class="block--${t} blockss" style="height:${liftheight}px">
+        <div class="elevator${t} el" style="top:${liftheight-150}px">
+        <div class="leftDoor leftDoor${t}"></div>
+        <div class="rightDoor rightDoor${t}"></div>
+        <span><input class="el${t}" type="text" value="1" disabled>
+        </div>
+        </div>
+        <label class="switch">
+        <input type="checkbox" class=" switchs switch${t}" onchange="checks('${t}')">
+        <span class="slider round"></span>
+        </label>
+        </div>`
+        //document.querySelector(`.blockss`).style.height=`${liftheight}px`
+    array.push({id:++ids,lift:t,checked:false,floor:1})
+    document.querySelector('.mainElevator').insertAdjacentHTML("beforeend",html)
+    }
+    document.querySelector('.mainElevator').insertAdjacentHTML("beforeend",`<div class="block-buttons"></div>`)
+    document.querySelector(`.block-buttons`).style.height=`${flheight}px`
+    for(let t=numfloor; t>=1;t--){
+        if(t==1){
+         htmlfl=`<div class="floor-${t} floor">
+            <div class="floorNo ${t}"><span>${t}</span></div>
+            <div class="up-btn"><button class="btns btn${t}up" ></button></div>
+            <div class="up-btn"><button class="btns btn${t}up" onclick="upbtn('${t}')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+        </div>`
+        }
+        else if(t==numfloor){
+            htmlfl=`<div class="floor-${t} floor">
+            <div class="floorNo ${t}"><span>${t}</span></div>
+           <div class="down-btn"> <button class="btns btn${t}dwn" onclick="dwnbtn('${t}')"> <i class="fa-solid fa-circle-down"></i></button></div>
+        </div>`
+        }
+        else{
+            htmlfl =`<div class="floor-${t} floor">
+            <div class="floorNo ${t}"><span>${t}</span></div>
+            <div class="up-btn"><button class="btns btn${t}Up" onclick="upbtn('${t}')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+           <div class="down-btn"> <button class="btns btn${t}dwn" onclick="dwnbtn('${t}')"><i class="fa-solid fa-circle-down"></i></button></div>
+        </div>`
+    }
+    document.querySelector('.block-buttons').insertAdjacentHTML("afterbegin",htmlfl)
+
+    }
+    document.querySelector(`.block-buttons`).insertAdjacentHTML("afterbegin",`<div class="maintenance"><span >MAINTENANCE</span></div>`)
+}
+
+
+displaylifts()
+console.log(array)
 
 let floor =[{floor:1 ,checked:false},{floor:2,checked:false},{floor:3,checked:false},{floor:4,checked:false},{floor:5,checked:false}]
 
@@ -61,10 +118,11 @@ const liftMovments = function(i){
              if(closest==el.floor && el.checked==false){
                 console.log(el.floor)
                 for(let id =el.id;id>=el.id;id--){
-                    marginbottom=Number(margin*i)
-                    margintop=740-marginbottom;
-                    var posbtm =Number(margin*el.floor) ; 
-                    var postop= 740-posbtm;
+                    marginbottom=Number(150*i)
+                    margintop=(liftheight-marginbottom);
+                    console.log(marginbottom,margintop)
+                    var posbtm =Number(150*el.floor) ; 
+                    var postop= liftheight-posbtm;
                     let n=el.floor
                     let mb=posbtm
                     let mbt=postop
@@ -77,9 +135,9 @@ const liftMovments = function(i){
                    
 
                     clearInterval(animation);
-                    animation= setInterval(frame, 10);
+                    animation= setInterval(frame, 0);
                     function frame() {
-                      if (postop == margintop || posbtm==marginbottom) {
+                      if (postop == margintop) {
                         document.querySelector(`.rightDoor${el.id}`).style.border=`solid brown`
                         document.querySelector(`.leftDoor${el.id}`).style.border=`solid brown`
                         clearInterval(animationDoors);
@@ -112,61 +170,43 @@ const liftMovments = function(i){
                                 }
                             }
                         }
-                                
 
+                        if(postop==mbt){
+                            mbt-=150
+                            document.querySelector(`.el${el.id}`).value=n
+                            n++
 
-        
-                        if(posbtm==marginbottom){
-                            if(Number(mb)==posbtm){
-                                mb+=148
-                                document.querySelector(`.el${el.id}`).value=`${n}`
-                                n++;
-                                console.log(n)
-                              
-                            }
                         }
-                        else{
-                            if(Number(mbt)==postop){
-                                mbt+=148
-                                n--;
-                                document.querySelector(`.el${el.id}`).value=`${n}`
-                                console.log(n)
-                              
-                            }
-                        }
+
                         clearInterval(animation);
                       } 
                       else {
                             if(postop > margintop){
-                                if(Number(mb)==posbtm){
-                                  mb+=148
-                                  document.querySelector(`.el${el.id}`).value=`${n}`
-                                  n++;
-                                  console.log(n)
-                                
-                              }
+                                if(postop==mbt){
+                                    mbt-=150
+                                    document.querySelector(`.el${el.id}`).value=n
+                                    n++
+                                }
                                 postop--; 
                                 posbtm++;
                            
-                                document.querySelector(`.elevator${el.id}`).style.marginTop=`${postop}px`
-                                document.querySelector(`.elevator${el.id}`).style.marginBottom=`${posbtm}px`
+                                document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
+                                //document.querySelector(`.elevator${el.id}`).style.bottom=`${posbtm}px`
                                 document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
                                 document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`
                         
                             }
                             else{
-                                if(Number(mbt)==postop){
-                                    mbt+=148
-                                    n--;
-                                    document.querySelector(`.el${el.id}`).value=`${n}`
-                                    console.log(n)
-                                  
+                                if(postop==mbt){
+                                    mbt+=150
+                                    document.querySelector(`.el${el.id}`).value=n
+                                    n--
                                 }
                                 postop++; 
                                 posbtm--;
             
-                                document.querySelector(`.elevator${el.id}`).style.marginTop=`${postop}px`
-                                document.querySelector(`.elevator${el.id}`).style.marginBottom=`${posbtm}px`
+                                document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
+                                //document.querySelector(`.elevator${el.id}`).style.bottom=`${posbtm}px`
                                 document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
                                 document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`
                     
@@ -179,13 +219,8 @@ const liftMovments = function(i){
                }
 
                break;
-            }
-            
+            }   
         }
-        
-
-    
-
 }
 
 const upbtn=function(i){
@@ -203,8 +238,8 @@ const maintain = function(){
         
         if(el.checked==true){
 
-            document.querySelector(`.elevator${el.id}`).style.marginTop='592px'
-            document.querySelector(`.elevator${el.id}`).style.marginBottom='148px'
+            document.querySelector(`.elevator${el.id}`).style.top=`${liftheight-100}px`
+            //document.querySelector(`.elevator${el.id}`).style.marginBottom='148px'
             document.querySelector(`.elevator${el.id}`).style.border=' red'
             document.querySelector(`.elevator${el.id}`).style.opacity='0.3'
             document.querySelector(`.el${el.id}`).value=`1`
@@ -230,9 +265,3 @@ function checks(i){
     array[index].checked=!array[index].checked
     maintain()
 }
-
-
-
-
-
-

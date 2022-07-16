@@ -1,44 +1,56 @@
 .mainElevator{
     background-color: #005868;
-    height: 868px;
-    width: 1550px;
+    height: fit-content;
+    width: fit-content;
     display: flex;
     flex-direction: row;
     align-content: stretch;
     justify-content: space-evenly;
     align-items: center;
+    //margin-left: 411px;
     .subBlock{
         width: 230px;
         align-content: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0%;
+        padding-bottom: 0px;
+        height: fit-content;
     }
     
     .blockss{
         background-color: #acdeff;
         width: 90%;
-        height: 740px;
+        height: 900px;
         //border: solid black;
-        align-items: end;
-        display: grid;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: stretch;
-        justify-content: center;
-        justify-items: center;
+        // align-items: end;
+        // display: grid;
+        // flex-direction: column;
+        // flex-wrap: nowrap;
+        // align-content: stretch;
+        // justify-content: center;
+        // justify-items: center;
 
         .el{
             background-color: #61686d;
             width: 136px;
-            height: 145px;
+            height: 100px;
             border: solid black;
             opacity: 0.8;
-            //display: flex;
+            position: relative;
+            align-items: center;
+            //top: 845px;
+            left: 33px;
+            // background-color: #61686d;
+            // width: 136px;
+            // height: 100px;
+            // // margin-bottom: 100px;
+            // border: solid black;
+            // opacity: 0.8;
+            // //display: flex;
             input{
                 text-align: center;
-                width: 8px;
+                width: 15px;
                 height: 50px;
                 align-items:left;
                 margin: auto;
@@ -51,7 +63,7 @@
             .rightDoor{
                 background-color: silver;
                 width: 60px;
-                height: 140px;
+                height: 95px;
                 position:relative;
                 border:3px solid brown;
                 left: 0px;
@@ -62,7 +74,7 @@
             .leftDoor{
                 background-color:silver;
                 width: 60px;
-                height: 140px;
+                height: 95px;
                 position: relative;
                 border: 3px solid brown;
                 float: left;
@@ -94,7 +106,7 @@
         }
     
         .floor{
-            display: flex;
+            //display: flex;
             
             display: flex;
             justify-content: center;
@@ -203,135 +215,4 @@
     border-radius: 50%;
   }
 
-  @media only screen and (max-width:770px){
-    .mainElevator{
-      width: 710px;
-      height: 800px;
-      .subBlock{
-        width: 130px;
-        align-content: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0%;
-    }
-    .blockss{
-      background-color: #acdeff;
-      width: 90%;
-      height: 740px;
-      //border: solid black;
-      align-items: end;
-      display: grid;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-content: stretch;
-      justify-content: center;
-      justify-items: center;
-
-      .el{
-          background-color: #61686d;
-          width: 90px;
-          height: 135px;
-          border: solid black;
-          opacity: 0.8;
-          //display: flex;
-          input{
-              text-align: center;
-              width: 8px;
-              height: 50px;
-              align-items:left;
-              margin: auto;
-              background-color:#61686d;
-              opacity: 0;
-              border: none;
-              color: white;
-              position:absolute;
-          }
-          .rightDoor{
-              background-color: silver;
-              width: 35px;
-              height: 128px;
-              position:relative;
-              border:3px solid brown;
-              left: 0px;
-              //right: 25px;
-              
-
-              float: right;
-          }
-          .leftDoor{
-              background-color:silver;
-              width: 40px;
-              height: 128px;
-              position: relative;
-              border: 3px solid brown;
-              float: left;
-              right: 0px;
-
-          }
   
-      }
-  }
-
-  .block-buttons{
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    height: 800px;
-    width: 150px;
-   
-
-    .maintenance{
-        span{
-            
-            color: white;
-            text-align: right;
-            width: 100%;
-            font-size: small;
-            
-        }
-    }
-
-    .floor{
-        display: flex;
-        
-        display: flex;
-        justify-content: center;
-        flex-wrap: nowrap;
-        align-items: baseline;
-      
-        .floorNo{
-            background-color: white;
-            color: black;
-            border: solid black;
-            border-radius: 50px ;
-            font-size: 20px;
-            //padding: 10%;
-            height: 25px;
-            width: 25px;
-            line-height: 25px;
-            text-align: center;
-            margin-right:20px ;
-            float: right;
-        }
-
-        .btns{
-            border-top-width: 0px;
-            border-right-width: 0px;
-            border-bottom-width: 0px;
-            border-left-width: 0px;
-            background-color:  #005868;
-            color: white;
-           font-size: 25px;
-           :active{
-            background-color:white;
-            color: #005868;
-        }
-        }
-    }
-}
-
-    }
-  }
