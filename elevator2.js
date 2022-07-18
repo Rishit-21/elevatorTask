@@ -128,23 +128,23 @@ const liftMovments = function(i){
                     let mbt=postop
                     let posl=0
                     let posr=0
-                    let clposl=50
-                    let clposr=50
+                    let clposl=60
+                    let clposr=60
+         
                    
-                    console.log("cur",postop, posbtm)
-                   
+                    console.log("cur",postop, posbtm)                  
 
                     clearInterval(animation);
                     animation= setInterval(frame, 0);
                     function frame() {
                       if (postop == margintop) {
-                        document.querySelector(`.rightDoor${el.id}`).style.border=`solid brown`
-                        document.querySelector(`.leftDoor${el.id}`).style.border=`solid brown`
+                        document.querySelector(`.rightDoor${el.id}`).style.border=` solid saddlebrown`
+                        document.querySelector(`.leftDoor${el.id}`).style.border=` solid saddlebrown`
                         clearInterval(animationDoors);
                         animationDoors=setInterval(frame,15);
                         function frame(){
                             if(el.floor==i){
-                                if(posl==50 && posr==50){
+                                if(posl==60 && posr==60){
                                     clearInterval(animation)
                                     setTimeout(function(){
                                         if(clposl==0&& clposr==0){
@@ -153,22 +153,29 @@ const liftMovments = function(i){
                                         else{
                                             clposl--;
                                             clposr--;
+                                          
                                             console.log(posl,posr)
                                             document.querySelector(`.rightDoor${el.id}`).style.left=`${clposr}px`
                                             document.querySelector(`.leftDoor${el.id}`).style.right=`${clposl}px`
+                                          
                                             document.querySelector(`.el${el.id}`).style.opacity='0'
+
                                         }
                                     },2000)
                                 }
                                 else{
-                                    posl++;
-                                    posr++;
-                                    console.log(posl,posr)
-                                    document.querySelector(`.rightDoor${el.id}`).style.left=`${posr}px`
-                                    document.querySelector(`.leftDoor${el.id}`).style.right=`${posl}px`
-                                    document.querySelector(`.el${el.id}`).style.opacity='1'
+                                    
+                                        posl++;
+                                        posr++;
+                                  
+                                        console.log(posl,posr)
+                                        document.querySelector(`.rightDoor${el.id}`).style.left=`${posr}px`
+                                        document.querySelector(`.leftDoor${el.id}`).style.right=`${posl}px`
+                                        
+                                        
+                                        document.querySelector(`.el${el.id}`).style.opacity=`1`
+                                    }
                                 }
-                            }
                         }
 
                         if(postop==mbt){
@@ -224,13 +231,13 @@ const liftMovments = function(i){
 }
 
 const upbtn=function(i){
-    document.querySelector('.up-btn').classList.add('action')
-    document.querySelector ('.down-btn').classList.remove('action')
+    // document.querySelector('.up-btn').classList.add('action')
+    // document.querySelector ('.down-btn').classList.remove('action')
         liftMovments(i) 
 }
 const dwnbtn=function(i){
-    document.querySelector('.up-btn').classList.remove('action')
-    document.querySelector ('.down-btn').classList.add('action')
+    // document.querySelector('.up-btn').classList.remove('action')
+    // document.querySelector ('.down-btn').classList.add('action')
     liftMovments(i)
 }
 const maintain = function(){
@@ -247,6 +254,7 @@ const maintain = function(){
             //break
         }
         else if(el.checked==false){
+            document.querySelector(`.elevator${el.id}`).style.top=`${liftheight-150}px`
             document.querySelector(`.elevator${el.id}`).style.border='solid black'
             document.querySelector(`.elevator${el.id}`).style.opacity='0.8'
           if(el.floor==10000000000000){

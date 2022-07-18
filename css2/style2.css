@@ -1,3 +1,9 @@
+body {
+  align-content: center;
+  margin-left: 0px;
+  width: 100%;
+}
+
 .mainElevator {
   background-color: #005868;
   height: -webkit-fit-content;
@@ -11,6 +17,7 @@
   align-content: stretch;
   justify-content: space-evenly;
   align-items: center;
+  margin: auto;
 }
 .mainElevator .subBlock {
   width: 230px;
@@ -37,34 +44,39 @@
   position: relative;
   align-items: center;
   left: 33px;
+  overflow: hidden;
+  background-image: URL("lift.jpg");
+  background-size: 100% 100%;
+  align-content: center;
 }
 .mainElevator .blockss .el input {
   text-align: center;
   width: 15px;
-  height: 50px;
-  align-items: left;
-  margin: auto;
-  background-color: #61686d;
+  height: 20px;
+  align-items: center;
+  margin-left: 0px;
+  right: 43%;
+  background-color: none;
   opacity: 0;
   border: none;
-  color: white;
+  color: black;
   position: absolute;
 }
 .mainElevator .blockss .el .rightDoor {
-  background-color: silver;
-  width: 60px;
+  background-color: rgba(192, 192, 192, 0.719);
+  width: 63px;
   height: 95px;
   position: relative;
-  border: 3px solid brown;
+  border: solid saddlebrown;
   left: 0px;
   float: right;
 }
 .mainElevator .blockss .el .leftDoor {
-  background-color: silver;
-  width: 60px;
+  background-color: rgba(192, 192, 192, 0.719);
+  width: 61px;
   height: 95px;
   position: relative;
-  border: 3px solid brown;
+  border: solid saddlebrown;
   float: left;
   right: 0px;
 }
@@ -94,7 +106,7 @@
   color: #005868;
   border: solid black;
   border-radius: 50px;
-  font-size: 20px;
+  font-size: 25px;
   height: 50px;
   width: 50px;
   line-height: 50px;

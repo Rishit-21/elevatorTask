@@ -1,3 +1,10 @@
+body{
+
+  align-content: center;
+  margin-left: 00px;
+  width: 100%
+}
+
 .mainElevator{
     background-color: #005868;
     height: fit-content;
@@ -7,6 +14,7 @@
     align-content: stretch;
     justify-content: space-evenly;
     align-items: center;
+    margin: auto;
     //margin-left: 411px;
     .subBlock{
         width: 230px;
@@ -22,15 +30,6 @@
         background-color: #acdeff;
         width: 90%;
         height: 900px;
-        //border: solid black;
-        // align-items: end;
-        // display: grid;
-        // flex-direction: column;
-        // flex-wrap: nowrap;
-        // align-content: stretch;
-        // justify-content: center;
-        // justify-items: center;
-
         .el{
             background-color: #61686d;
             width: 136px;
@@ -39,44 +38,42 @@
             opacity: 0.8;
             position: relative;
             align-items: center;
-            //top: 845px;
             left: 33px;
-            // background-color: #61686d;
-            // width: 136px;
-            // height: 100px;
-            // // margin-bottom: 100px;
-            // border: solid black;
-            // opacity: 0.8;
-            // //display: flex;
+            overflow: hidden;
+            background-image:URL('lift.jpg');
+            background-size: 100% 100%;
+            align-content: center;
             input{
                 text-align: center;
                 width: 15px;
-                height: 50px;
-                align-items:left;
-                margin: auto;
-                background-color:#61686d;
+                height: 20px;
+                align-items:center;
+                margin-left: 0px;
+                //margin-right: 50px;
+                right: 43%;
+                background-color:none;
                 opacity: 0;
                 border: none;
-                color: white;
+                color: black;
                 position:absolute;
             }
             .rightDoor{
-                background-color: silver;
-                width: 60px;
+                background-color:rgba(192, 192, 192, 0.719);
+                width: 63px;
                 height: 95px;
                 position:relative;
-                border:3px solid brown;
+                border:solid saddlebrown;
                 left: 0px;
                 
 
                 float: right;
             }
             .leftDoor{
-                background-color:silver;
-                width: 60px;
+                background-color:rgba(192, 192, 192, 0.719);
+                width: 61px;
                 height: 95px;
                 position: relative;
-                border: 3px solid brown;
+                border: solid saddlebrown;
                 float: left;
                 right: 0px;
 
@@ -118,7 +115,7 @@
                 color: #005868;
                 border: solid black;
                 border-radius: 50px ;
-                font-size: 20px;
+                font-size: 25px;
                 //padding: 10%;
                 height: 50px;
                 width: 50px;
