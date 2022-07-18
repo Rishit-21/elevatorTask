@@ -67,7 +67,7 @@ body {
   width: 63px;
   height: 95px;
   position: relative;
-  border: solid saddlebrown;
+  border: solid rgb(83, 83, 83);
   left: 0px;
   float: right;
 }
@@ -76,7 +76,7 @@ body {
   width: 61px;
   height: 95px;
   position: relative;
-  border: solid saddlebrown;
+  border: solid rgb(83, 83, 83);
   float: left;
   right: 0px;
 }
