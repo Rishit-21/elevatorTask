@@ -65,46 +65,19 @@ const displaylifts = function(){
     document.querySelector(`.block-buttons`).insertAdjacentHTML("afterbegin",`<div class="maintenance"><span >MAINTENANCE</span></div>`)
 }
 displaylifts()
-const upbtn=function(i){
-        liftMovments(i) 
-}
-const dwnbtn=function(i){
-    liftMovments(i)
-}
-function checks(i){
-    const index = array.findIndex(x=> x.id == i)
-    array[index].checked=!array[index].checked
-    maintain()
-}
-const maintain = function(){
-    for(let el of array){
-        if(el.checked==true){
-            document.querySelector(`.elevator${el.id}`).style.top=`${liftheight-100}px`
-            document.querySelector(`.elevator${el.id}`).style.border=' red'
-            document.querySelector(`.elevator${el.id}`).style.opacity='0.3'
-            document.querySelector(`.el${el.id}`).value=`1`
-            el.floor=10000000000000;
-        }
-        else if(el.checked==false){
-            document.querySelector(`.elevator${el.id}`).style.top=`${liftheight-150}px`
-            document.querySelector(`.elevator${el.id}`).style.border='solid black'
-            document.querySelector(`.elevator${el.id}`).style.opacity='0.8'
-          if(el.floor==10000000000000){
-            el.floor=1
-          }
-          else{
-            el.floor=el.floor
-          }
-        }  
-    }
-}
+
+let closest
+
+
+    function closests(i) { closest=array.map(el=>el.floor).reduce(function(prev, curr) {
+        return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+    })}
+
 
 const liftMovments = function(i){
-    var closest = array.map(el=>el.floor).reduce(function(prev, curr) {
-        return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
-      });
+    closests(i)
     for(let el of array){
-         if(closest==el.floor && el.checked==false){
+        if(closest==el.floor && el.checked==false){
             for(let id =el.id;id>=el.id;id--){
                 marginbottom=Number(150*i)
                 margintop=(liftheight-marginbottom);
@@ -116,44 +89,44 @@ const liftMovments = function(i){
                 let mbt=postop
                 let posl=0
                 let posr=0
-                let clposl=60
-                let clposr=60                                   
+                let clposl=55
+                let clposr=55                                   
                 clearInterval(animation);
                 animation= setInterval(frame, 0);
                 function frame() {
-                  if (postop == margintop) {
-                    document.querySelector(`.rightDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
-                    document.querySelector(`.leftDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
-                    clearInterval(animationDoors);
-                    animationDoors=setInterval(frame,15);
-                    function frame(){
-                        if(el.floor==i){
-                            if(posl==60 && posr==60){
-                                clearInterval(animation)
-                                setTimeout(function(){
-                                    if(clposl==0&& clposr==0){
-                                        clearInterval(animationDoors)
-                                    }
-                                    else{
-                                        clposl--;
+                    if (postop == margintop) {
+                        document.querySelector(`.rightDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
+                        document.querySelector(`.leftDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
+                        clearInterval(animationDoors);
+                        animationDoors=setInterval(frame,0);
+                        function frame(){
+                            if(el.floor==i){
+                                if(posl==55 && posr==55){
+                                    clearInterval(animation)
+                                   
+                                        if(clposl==0&& clposr==0){
+                                            clearInterval(animationDoors)
+                                        }
+                                        else{
+                                            clposl--;
                                         clposr--;
-                                      
+                                        
                                         console.log(posl,posr)
                                         document.querySelector(`.rightDoor${el.id}`).style.left=`${clposr}px`
                                         document.querySelector(`.leftDoor${el.id}`).style.right=`${clposl}px`
                                         document.querySelector(`.el${el.id}`).style.opacity='0'
                                     }
-                                },2000)
+                                
                             }
                             else{
-                                    posl++;
-                                    posr++;
-                                    console.log(posl,posr)
-                                    document.querySelector(`.rightDoor${el.id}`).style.left=`${posr}px`
-                                    document.querySelector(`.leftDoor${el.id}`).style.right=`${posl}px`
-                                    document.querySelector(`.el${el.id}`).style.opacity=`1`
-                                }
+                                posl++;
+                                posr++;
+                                console.log(posl,posr)
+                                document.querySelector(`.rightDoor${el.id}`).style.left=`${posr}px`
+                                document.querySelector(`.leftDoor${el.id}`).style.right=`${posl}px`
+                                document.querySelector(`.el${el.id}`).style.opacity=`1`
                             }
+                        }
                     }
                     if(postop==mbt){
                         mbt-=150
@@ -161,17 +134,17 @@ const liftMovments = function(i){
                         n++
                     }
                     clearInterval(animation);
-                  } 
-                  else {
-                        if(postop > margintop){
-                            if(postop==mbt){
-                                mbt-=150
-                                document.querySelector(`.el${el.id}`).value=n
-                                n++
+                } 
+                else {
+                      if(postop > margintop){
+                          if(postop==mbt){
+                              mbt-=150
+                              document.querySelector(`.el${el.id}`).value=n
+                              n++
                             }
                             postop--; 
                             posbtm++;
-                       
+                            
                             document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
                             document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
                             document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`
@@ -187,16 +160,54 @@ const liftMovments = function(i){
                             document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
                             document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
                             document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`                    
+                        }
+                        array[id-1].floor=i
+                        
                     }
-                    array[id-1].floor=i
-                 
+                    
                 }
-                  
             }
-        }
-
-        break;
-    }   
- }
+            
+            break;
+        }   
+    }
 }
 
+const upbtn=function(i){
+    closests(i)
+
+    liftMovments(i) 
+}
+const dwnbtn=function(i){
+    closests(i)
+   
+liftMovments(i)
+}
+
+const maintain = function(){
+    for(let el of array){
+        if(el.checked==true){
+            document.querySelector(`.elevator${el.id}`).style.top=`${liftheight-100}px`
+            document.querySelector(`.elevator${el.id}`).style.border=' red'
+            document.querySelector(`.elevator${el.id}`).style.opacity='0.3'
+            document.querySelector(`.el${el.id}`).value=`1`
+            el.floor=10000000000000;
+        }
+        else if(el.checked==false){
+            //document.querySelector(`.elevator${el.id}`).style.top=`${liftheight}px`
+            document.querySelector(`.elevator${el.id}`).style.border='solid black'
+            document.querySelector(`.elevator${el.id}`).style.opacity='0.8'
+            if(el.floor==10000000000000){
+                el.floor=1
+            }
+            else{
+                el.floor=el.floor
+            }
+        }  
+    }
+}
+function checks(i){
+    const index = array.findIndex(x=> x.id == i)
+    array[index].checked=!array[index].checked
+    maintain()
+}
