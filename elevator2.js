@@ -69,13 +69,16 @@ displaylifts()
 let closest
 
 
-    function closests(i) { closest=array.map(el=>el.floor).reduce(function(prev, curr) {
-        return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
-    })}
+    // function closests(i) { closest=array.map(el=>el.floor).reduce(function(prev, curr) {
+    //     return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+    // })}
 
 
 const liftMovments = function(i){
-    closests(i)
+    closest=array.map(el=>el.floor).reduce(function(prev, curr) {
+           return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+         })
+    // closests(i)
     for(let el of array){
         if(closest==el.floor && el.checked==false){
             for(let id =el.id;id>=el.id;id--){
@@ -98,7 +101,7 @@ const liftMovments = function(i){
                         document.querySelector(`.rightDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
                         document.querySelector(`.leftDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
                         clearInterval(animationDoors);
-                        animationDoors=setInterval(frame,0);
+                        animationDoors=setInterval(frame,15);
                         function frame(){
                             if(el.floor==i){
                                 if(posl==55 && posr==55){
@@ -174,12 +177,12 @@ const liftMovments = function(i){
 }
 
 const upbtn=function(i){
-    closests(i)
+    // closests(i)
 
     liftMovments(i) 
 }
 const dwnbtn=function(i){
-    closests(i)
+    // closests(i)
    
 liftMovments(i)
 }
