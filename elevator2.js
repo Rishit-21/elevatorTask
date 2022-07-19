@@ -103,7 +103,7 @@ const liftMovments = function(i){
                             if(el.floor==i){
                                 if(posl==55 && posr==55){
                                     clearInterval(animation)
-                                   
+                                    setTimeout(function(){
                                         if(clposl==0&& clposr==0){
                                             clearInterval(animationDoors)
                                         }
@@ -116,7 +116,7 @@ const liftMovments = function(i){
                                         document.querySelector(`.leftDoor${el.id}`).style.right=`${clposl}px`
                                         document.querySelector(`.el${el.id}`).style.opacity='0'
                                     }
-                                
+                                },2000)
                             }
                             else{
                                 posl++;
