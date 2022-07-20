@@ -3,9 +3,10 @@ let call=0
 let marginbottom=0
 let margintop=740
 let margin=148
-
 let animation=null;
 let animationDoors=null;
+//let liftNo
+
 
 let ids=0;
 
@@ -65,29 +66,33 @@ const displaylifts = function(){
     document.querySelector(`.block-buttons`).insertAdjacentHTML("afterbegin",`<div class="maintenance"><span >MAINTENANCE</span></div>`)
 }
 displaylifts()
+let index
 
 let closest
 
 
-    // function closests(i) { closest=array.map(el=>el.floor).reduce(function(prev, curr) {
-    //     return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
-    // })}
+    function closests(i) { closest=array.map(el=>el.floor).reduce(function(prev, curr) {
+        return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+    })}
+  
 
 
 const liftMovments = function(i){
-    closest=array.map(el=>el.floor).reduce(function(prev, curr) {
-           return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
-         })
-    // closests(i)
-    for(let el of array){
-        if(closest==el.floor && el.checked==false){
-            for(let id =el.id;id>=el.id;id--){
+    // closest=array.map(el=>el.floor).reduce(function(prev, curr) {
+    //        return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+    //      })
+    closests(i)
+   index=array.findIndex(el=>el.floor==closest)
+    //for(let el of array){
+        if(closest==array[index].floor && array[index].checked==false ){
+            // for(let id =array[index].id;id>=array[index].id;id--){
+                //array[index].lift.isMoving=true
                 marginbottom=Number(150*i)
                 margintop=(liftheight-marginbottom);
                 console.log(marginbottom,margintop)
-                var posbtm =Number(150*el.floor) ; 
+                var posbtm =Number(150*array[index].floor) ; 
                 var postop= liftheight-posbtm;
-                let n=el.floor
+                let n=array[index].floor
                 let mb=posbtm
                 let mbt=postop
                 let posl=0
@@ -95,18 +100,18 @@ const liftMovments = function(i){
                 let clposl=55
                 let clposr=55                                   
                 clearInterval(animation);
-                animation= setInterval(frame, 0);
+                animation= setInterval(frame, 5);
                 function frame() {
                     if (postop == margintop) {
-                        document.querySelector(`.rightDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
-                        document.querySelector(`.leftDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
+                        document.querySelector(`.elevator${array[index].id}`).style.top=`${postop}px`
+                        document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                        document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
                         clearInterval(animationDoors);
                         animationDoors=setInterval(frame,15);
                         function frame(){
-                            if(el.floor==i){
+                            if(array[index].floor==i){
                                 if(posl==55 && posr==55){
                                     clearInterval(animation)
-                                    setTimeout(function(){
                                         if(clposl==0&& clposr==0){
                                             clearInterval(animationDoors)
                                         }
@@ -115,74 +120,77 @@ const liftMovments = function(i){
                                         clposr--;
                                         
                                         console.log(posl,posr)
-                                        document.querySelector(`.rightDoor${el.id}`).style.left=`${clposr}px`
-                                        document.querySelector(`.leftDoor${el.id}`).style.right=`${clposl}px`
-                                        document.querySelector(`.el${el.id}`).style.opacity='0'
+                                        document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
+                                        document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
+                                        document.querySelector(`.el${array[index].id}`).style.opacity='0'
                                     }
-                                },2000)
+                               
                             }
                             else{
                                 posl++;
                                 posr++;
                                 console.log(posl,posr)
-                                document.querySelector(`.rightDoor${el.id}`).style.left=`${posr}px`
-                                document.querySelector(`.leftDoor${el.id}`).style.right=`${posl}px`
-                                document.querySelector(`.el${el.id}`).style.opacity=`1`
+                                document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
+                                document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
+                                document.querySelector(`.el${array[index].id}`).style.opacity=`1`
                             }
                         }
                     }
                     if(postop==mbt){
                         mbt-=150
-                        document.querySelector(`.el${el.id}`).value=n
+                        document.querySelector(`.el${array[index].id}`).value=n
                         n++
                     }
+                   
                     clearInterval(animation);
                 } 
                 else {
                       if(postop > margintop){
                           if(postop==mbt){
                               mbt-=150
-                              document.querySelector(`.el${el.id}`).value=n
+                              document.querySelector(`.el${array[index].id}`).value=n
                               n++
                             }
                             postop--; 
                             posbtm++;
                             
-                            document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
-                            document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
-                            document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`
+                            document.querySelector(`.elevator${array[index].id}`).style.top=`${postop}px`
+                            document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                            document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
                         }
                         else{
                             if(postop==mbt){
                                 mbt+=150
-                                document.querySelector(`.el${el.id}`).value=n
+                                document.querySelector(`.el${array[index].id}`).value=n
                                 n--
                             }
                             postop++; 
                             posbtm--;         
-                            document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
-                            document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
-                            document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`                    
+                            document.querySelector(`.elevator${array[index].id}`).style.top=`${postop}px`
+                            document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                            document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
                         }
-                        array[id-1].floor=i
+                        //array[index].lift.isMoving=false
+                        array[index].floor=i
                         
                     }
                     
                 }
-            }
+            //}
+            //break;
             
-            break;
+            
         }   
-    }
+    //}
 }
 
 const upbtn=function(i){
-    // closests(i)
+     
 
     liftMovments(i) 
 }
 const dwnbtn=function(i){
-    // closests(i)
+     
    
 liftMovments(i)
 }
