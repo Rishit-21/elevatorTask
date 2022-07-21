@@ -1,11 +1,12 @@
 
 let call=0 
-let marginbottom=0
-let margintop=740
+// let marginbottom=0
+// let margintop=740
 let margin=148
+// let animation=null;
+// let animationDoors=null;
+//let liftNo
 
-let animation=null;
-let animationDoors=null;
 
 let ids=0;
 
@@ -34,7 +35,7 @@ const displaylifts = function(){
         <span class="slider round"></span>
         </label>
         </div>`
-    array.push({id:++ids,lift:t,checked:false,floor:1})
+    array.push({id:++ids,lift:t,checked:false,floor:1,moving:false})
     document.querySelector('.mainElevator').insertAdjacentHTML("beforeend",html)
     }
     document.querySelector('.mainElevator').insertAdjacentHTML("beforeend",`<div class="block-buttons"></div>`)
@@ -65,126 +66,252 @@ const displaylifts = function(){
     document.querySelector(`.block-buttons`).insertAdjacentHTML("afterbegin",`<div class="maintenance"><span >MAINTENANCE</span></div>`)
 }
 displaylifts()
-
-let closest
-
-
-    // function closests(i) { closest=array.map(el=>el.floor).reduce(function(prev, curr) {
-    //     return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
-    // })}
+let index
+let funcount=0;
 
 
-const liftMovments = function(i){
-    closest=array.map(el=>el.floor).reduce(function(prev, curr) {
-           return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
-         })
-    // closests(i)
-    for(let el of array){
-        if(closest==el.floor && el.checked==false){
-            for(let id =el.id;id>=el.id;id--){
-                marginbottom=Number(150*i)
-                margintop=(liftheight-marginbottom);
-                console.log(marginbottom,margintop)
-                var posbtm =Number(150*el.floor) ; 
+let moving;
+
+
+    let closest= function(i){
+        let clfloor = array.map(el=>el.floor).reduce(function(prev, curr) {
+        return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+
+    })
+    return array.findIndex(el=>el.floor==clfloor)
+}
+  
+
+
+const liftMovments = function(closest,i){
+    funcount++;
+    // closest=array.map(el=>el.floor).reduce(function(prev, curr) {
+    //        return (Math.abs(curr - i) < Math.abs(prev - i) ? curr : prev);
+    //      })
+    
+    let index = closest;
+    //for(let el of array){
+        if(array[index].checked==false ){
+            // for(let id =array[index].id;id>=array[index].id;id--){
+                //array[index].lift.isliftMovements=true
+                let animation=null;
+                let animationDoors=null;
+                let marginbottom=Number(150*i)
+                let margintop=(liftheight-marginbottom)
+                var posbtm =Number(150*array[index].floor)  
                 var postop= liftheight-posbtm;
-                let n=el.floor
+                let n=array[index].floor
                 let mb=posbtm
                 let mbt=postop
-                let posl=0
-                let posr=0
+                let posl=0;
+                let posr=0;
                 let clposl=55
-                let clposr=55                                   
-                clearInterval(animation);
-                animation= setInterval(frame, 0);
-                function frame() {
-                    if (postop == margintop) {
-                        document.querySelector(`.rightDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
-                        document.querySelector(`.leftDoor${el.id}`).style.border=` solid rgb(83, 83, 83)`
-                        clearInterval(animationDoors);
-                        animationDoors=setInterval(frame,15);
-                        function frame(){
-                            if(el.floor==i){
-                                if(posl==55 && posr==55){
-                                    clearInterval(animation)
-                                    setTimeout(function(){
-                                        if(clposl==0&& clposr==0){
-                                            clearInterval(animationDoors)
-                                        }
-                                        else{
-                                            clposl--;
-                                        clposr--;
+                let clposr=55                                  
+                array[index].floor=i
+                let elee=document.getElementsByClassName(`el`)[array[index].id - 1]
+                clearInterval(animation)
+                // const frame  = function () {
+                //     if (postop == margintop) {
+                //        elee.style.top=`${postop}px`
+                //         document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                //         document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                //         //array[index].moving=true;
+                //         clearInterval(animationDoors);
+                //         animationDoors=setInterval(frame1,15);
+                //         function frame1(){
+                //             if(array[index].floor==i){
+                //                 if(posl==55 && posr==55){
+                //                     clearInterval(animation)
+                //                         if(clposl==0&& clposr==0){
+                //                             clearInterval(animationDoors)
+                //                         }
+                //                         else{
+                //                             clposl--
+                //                         clposr--
                                         
-                                        console.log(posl,posr)
-                                        document.querySelector(`.rightDoor${el.id}`).style.left=`${clposr}px`
-                                        document.querySelector(`.leftDoor${el.id}`).style.right=`${clposl}px`
-                                        document.querySelector(`.el${el.id}`).style.opacity='0'
-                                    }
-                                },2000)
+                //                         document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
+                //                         document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
+                //                         document.querySelector(`.el${array[index].id}`).style.opacity='0'
+                //                     }
+                               
+                //             }
+                //             else{
+                //                 posl++;
+                //                 posr++;
+                               
+                //                 document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
+                //                 document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
+                //                 document.querySelector(`.el${array[index].id}`).style.opacity=`1`
+                //             }
+                //         }
+                //     }
+                //     if(postop==mbt){
+                //         mbt-=150
+                //         document.querySelector(`.el${array[index].id}`).value=n
+                //         n++
+                //     }
+                   
+                //     clearInterval(animation)
+
+                // } 
+                // else {
+
+                //     // if(funcount>1){
+                //     //     if(array[index-1].moving==false){
+                //     //         console.log(array[index].floor)
+                            
+                //     //         //index=index+1                   
+                //     //     }
+                //     //  }
+
+                //       if(postop > margintop){
+                //           if(postop==mbt){
+                //               mbt-=150
+                //               document.querySelector(`.el${array[index].id}`).value=n
+                //               n++
+                //             }
+                //             postop--; 
+                //             //posbtm++;
+                            
+                //             elee.style.top=`${postop}px`
+                //             document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                //             document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
+                //         }
+                //         else{
+                //             if(postop==mbt){
+                //                 mbt+=150
+                //                 document.querySelector(`.el${array[index].id}`).value=n
+                //                 n--
+                //             }
+                //             postop++; 
+                //             //posbtm--;         
+                //             elee.style.top=`${postop}px`
+                //             document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                //             document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
+                //         }
+                //     //     if(array[index-1].floor=n){
+                //     //         console.log(array[index].floor)
+                //     //         array[index].moving=true
+                //     //    }
+            
+            
+                //         //array[index].floor=i
+                        
+                //     }
+                    
+                // }
+                
+                animation= setInterval(
+                    function (){
+                        if (postop == margintop) {
+                           elee.style.top=`${postop}px`
+                            document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                            document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                            //array[index].moving=true;
+                            clearInterval(animationDoors);
+                            animationDoors=setInterval(frame1,15);
+                            function frame1(){
+                                if(array[index].floor==i){
+                                    if(posl==55 && posr==55){
+                                        clearInterval(animation)
+                                            if(clposl==0&& clposr==0){
+                                                clearInterval(animationDoors)
+                                            }
+                                            else{
+                                                clposl--
+                                            clposr--
+                                            
+                                            document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
+                                            document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
+                                            document.querySelector(`.el${array[index].id}`).style.opacity='0'
+                                        }
+                                   
+                                }
+                                else{
+                                    posl++;
+                                    posr++;
+                                   
+                                    document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
+                                    document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
+                                    document.querySelector(`.el${array[index].id}`).style.opacity=`1`
+                                }
+                            }
+                        }
+                        if(postop==mbt){
+                            mbt-=150
+                            document.querySelector(`.el${array[index].id}`).value=n
+                            n++
+                        }
+                       
+                        clearInterval(animation)
+    
+                    } 
+                    else {
+    
+                        // if(funcount>1){
+                        //     if(array[index-1].moving==false){
+                        //         console.log(array[index].floor)
+                                
+                        //         //index=index+1                   
+                        //     }
+                        //  }
+    
+                          if(postop > margintop){
+                              if(postop==mbt){
+                                  mbt-=150
+                                  document.querySelector(`.el${array[index].id}`).value=n
+                                  n++
+                                }
+                                postop--; 
+                                //posbtm++;
+                                
+                                elee.style.top=`${postop}px`
+                                document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                                document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
                             }
                             else{
-                                posl++;
-                                posr++;
-                                console.log(posl,posr)
-                                document.querySelector(`.rightDoor${el.id}`).style.left=`${posr}px`
-                                document.querySelector(`.leftDoor${el.id}`).style.right=`${posl}px`
-                                document.querySelector(`.el${el.id}`).style.opacity=`1`
+                                if(postop==mbt){
+                                    mbt+=150
+                                    document.querySelector(`.el${array[index].id}`).value=n
+                                    n--
+                                }
+                                postop++; 
+                                //posbtm--;         
+                                elee.style.top=`${postop}px`
+                                document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                                document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
                             }
-                        }
-                    }
-                    if(postop==mbt){
-                        mbt-=150
-                        document.querySelector(`.el${el.id}`).value=n
-                        n++
-                    }
-                    clearInterval(animation);
-                } 
-                else {
-                      if(postop > margintop){
-                          if(postop==mbt){
-                              mbt-=150
-                              document.querySelector(`.el${el.id}`).value=n
-                              n++
-                            }
-                            postop--; 
-                            posbtm++;
+                        //     if(array[index-1].floor=n){
+                        //         console.log(array[index].floor)
+                        //         array[index].moving=true
+                        //    }
+                
+                
+                            //array[index].floor=i
                             
-                            document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
-                            document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
-                            document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`
                         }
-                        else{
-                            if(postop==mbt){
-                                mbt+=150
-                                document.querySelector(`.el${el.id}`).value=n
-                                n--
-                            }
-                            postop++; 
-                            posbtm--;         
-                            document.querySelector(`.elevator${el.id}`).style.top=`${postop}px`
-                            document.querySelector(`.rightDoor${el.id}`).style.border=`solid green`
-                            document.querySelector(`.leftDoor${el.id}`).style.border=`solid green`                    
-                        }
-                        array[id-1].floor=i
                         
                     }
-                    
-                }
-            }
+                    , 5)
+                
+                
+            //}
+            //break;
             
-            break;
+            
         }   
-    }
+    //}
 }
 
 const upbtn=function(i){
-    // closests(i)
+     
 
-    liftMovments(i) 
+    liftMovments(closest(i),i) 
 }
 const dwnbtn=function(i){
-    // closests(i)
+     
    
-liftMovments(i)
+liftMovments(closest(i),i)
 }
 
 const maintain = function(){
