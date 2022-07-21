@@ -110,193 +110,98 @@ const liftMovments = function(closest,i){
                 array[index].floor=i
                 let elee=document.getElementsByClassName(`el`)[array[index].id - 1]
                 clearInterval(animation)
-                // const frame  = function () {
-                //     if (postop == margintop) {
-                //        elee.style.top=`${postop}px`
-                //         document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
-                //         document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
-                //         //array[index].moving=true;
-                //         clearInterval(animationDoors);
-                //         animationDoors=setInterval(frame1,15);
-                //         function frame1(){
-                //             if(array[index].floor==i){
-                //                 if(posl==55 && posr==55){
-                //                     clearInterval(animation)
-                //                         if(clposl==0&& clposr==0){
-                //                             clearInterval(animationDoors)
-                //                         }
-                //                         else{
-                //                             clposl--
-                //                         clposr--
-                                        
-                //                         document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
-                //                         document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
-                //                         document.querySelector(`.el${array[index].id}`).style.opacity='0'
-                //                     }
-                               
-                //             }
-                //             else{
-                //                 posl++;
-                //                 posr++;
-                               
-                //                 document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
-                //                 document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
-                //                 document.querySelector(`.el${array[index].id}`).style.opacity=`1`
-                //             }
-                //         }
-                //     }
-                //     if(postop==mbt){
-                //         mbt-=150
-                //         document.querySelector(`.el${array[index].id}`).value=n
-                //         n++
-                //     }
-                   
-                //     clearInterval(animation)
-
-                // } 
-                // else {
-
-                //     // if(funcount>1){
-                //     //     if(array[index-1].moving==false){
-                //     //         console.log(array[index].floor)
-                            
-                //     //         //index=index+1                   
-                //     //     }
-                //     //  }
-
-                //       if(postop > margintop){
-                //           if(postop==mbt){
-                //               mbt-=150
-                //               document.querySelector(`.el${array[index].id}`).value=n
-                //               n++
-                //             }
-                //             postop--; 
-                //             //posbtm++;
-                            
-                //             elee.style.top=`${postop}px`
-                //             document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
-                //             document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
-                //         }
-                //         else{
-                //             if(postop==mbt){
-                //                 mbt+=150
-                //                 document.querySelector(`.el${array[index].id}`).value=n
-                //                 n--
-                //             }
-                //             postop++; 
-                //             //posbtm--;         
-                //             elee.style.top=`${postop}px`
-                //             document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
-                //             document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
-                //         }
-                //     //     if(array[index-1].floor=n){
-                //     //         console.log(array[index].floor)
-                //     //         array[index].moving=true
-                //     //    }
-            
-            
-                //         //array[index].floor=i
-                        
-                //     }
-                    
-                // }
-                
-                animation= setInterval(
-                    function (){
-                        if (postop == margintop) {
-                           elee.style.top=`${postop}px`
-                            document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
-                            document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
-                            //array[index].moving=true;
-                            clearInterval(animationDoors);
-                            animationDoors=setInterval(frame1,15);
-                            function frame1(){
-                                if(array[index].floor==i){
-                                    if(posl==55 && posr==55){
-                                        clearInterval(animation)
-                                            if(clposl==0&& clposr==0){
-                                                clearInterval(animationDoors)
-                                            }
-                                            else{
-                                                clposl--
-                                            clposr--
-                                            
-                                            document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
-                                            document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
-                                            document.querySelector(`.el${array[index].id}`).style.opacity='0'
+                animation=setInterval(frame, 5)
+                   function  frame () {
+                    if (postop == margintop) {
+                       elee.style.top=`${postop}px`
+                        document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                        document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                        //array[index].moving=true;
+                        clearInterval(animationDoors);
+                        animationDoors=setInterval(frame1,15);
+                        function frame1(){
+                            if(array[index].floor==i){
+                                if(posl==55 && posr==55){
+                                    clearInterval(animation)
+                                        if(clposl==0&& clposr==0){
+                                            clearInterval(animationDoors)
                                         }
-                                   
-                                }
-                                else{
-                                    posl++;
-                                    posr++;
-                                   
-                                    document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
-                                    document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
-                                    document.querySelector(`.el${array[index].id}`).style.opacity=`1`
-                                }
-                            }
-                        }
-                        if(postop==mbt){
-                            mbt-=150
-                            document.querySelector(`.el${array[index].id}`).value=n
-                            n++
-                        }
-                       
-                        clearInterval(animation)
-    
-                    } 
-                    else {
-    
-                        // if(funcount>1){
-                        //     if(array[index-1].moving==false){
-                        //         console.log(array[index].floor)
-                                
-                        //         //index=index+1                   
-                        //     }
-                        //  }
-    
-                          if(postop > margintop){
-                              if(postop==mbt){
-                                  mbt-=150
-                                  document.querySelector(`.el${array[index].id}`).value=n
-                                  n++
-                                }
-                                postop--; 
-                                //posbtm++;
-                                
-                                elee.style.top=`${postop}px`
-                                document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
-                                document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
+                                        else{
+                                            clposl--
+                                        clposr--
+                                        
+                                        document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
+                                        document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
+                                        document.querySelector(`.el${array[index].id}`).style.opacity='0'
+                                    }
+                               
                             }
                             else{
-                                if(postop==mbt){
-                                    mbt+=150
-                                    document.querySelector(`.el${array[index].id}`).value=n
-                                    n--
-                                }
-                                postop++; 
-                                //posbtm--;         
-                                elee.style.top=`${postop}px`
-                                document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
-                                document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
+                                posl++;
+                                posr++;
+                               
+                                document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
+                                document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
+                                document.querySelector(`.el${array[index].id}`).style.opacity=`1`
                             }
-                        //     if(array[index-1].floor=n){
-                        //         console.log(array[index].floor)
-                        //         array[index].moving=true
-                        //    }
-                
-                
-                            //array[index].floor=i
-                            
                         }
+                    }
+                    if(postop==mbt){
+                        mbt-=150
+                        document.querySelector(`.el${array[index].id}`).value=n
+                        n++
+                    }
+                   
+                    clearInterval(animation)
+
+                } 
+                else {
+
+                    // if(funcount>1){
+                    //     if(array[index-1].moving==false){
+                    //         console.log(array[index].floor)
+                            
+                    //         //index=index+1                   
+                    //     }
+                    //  }
+
+                      if(postop > margintop){
+                          if(postop==mbt){
+                              mbt-=150
+                              document.querySelector(`.el${array[index].id}`).value=n
+                              n++
+                            }
+                            postop--; 
+                            //posbtm++;
+                            
+                            elee.style.top=`${postop}px`
+                            document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                            document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
+                        }
+                        else{
+                            if(postop==mbt){
+                                mbt+=150
+                                document.querySelector(`.el${array[index].id}`).value=n
+                                n--
+                            }
+                            postop++; 
+                            //posbtm--;         
+                            elee.style.top=`${postop}px`
+                            document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                            document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
+                        }
+                    //     if(array[index-1].floor=n){
+                    //         console.log(array[index].floor)
+                    //         array[index].moving=true
+                    //    }
+            
+            
+                        //array[index].floor=i
                         
                     }
-                    , 5)
-                
-                
-            //}
-            //break;
+                    
+                }
+               
             
             
         }   
