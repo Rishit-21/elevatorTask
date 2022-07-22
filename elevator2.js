@@ -42,20 +42,21 @@ const displaylifts = function(){
          htmlfl=`<div class="floor-${t} floor">
             <div class="floorNo ${t}"><span>${t}</span></div>
             <div class="up-btn"><button class="btns btn${t}up" ></button></div>
-            <div class="up-btn"><button class="btns btn${t}up" onclick="upbtn('${t}')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+            <div class="up-btn"><button class="btns btn${t}up up" onclick="upbtn('${t}')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
         </div>`
         }
         else if(t==numfloor){
             htmlfl=`<div class="floor-${t} floor">
             <div class="floorNo ${t}"><span>${t}</span></div>
-           <div class="down-btn"> <button class="btns btn${t}dwn" onclick="dwnbtn('${t}')"> <i class="fa-solid fa-circle-down"></i></button></div>
+            <div class="up-btn"><button class="btns btn${t}up" ></button></div>
+           <div class="down-btn"> <button class="btns btn${t}dwn dwn" onclick="dwnbtn('${t}')"> <i class="fa-solid fa-circle-chevron-up"></i></button></div>
         </div>`
         }
         else{
             htmlfl =`<div class="floor-${t} floor">
             <div class="floorNo ${t}"><span>${t}</span></div>
-            <div class="up-btn"><button class="btns btn${t}Up" onclick="upbtn('${t}')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
-           <div class="down-btn"> <button class="btns btn${t}dwn" onclick="dwnbtn('${t}')"><i class="fa-solid fa-circle-down"></i></button></div>
+            <div class="up-btn"><button class="btns btn${t}Up up" onclick="upbtn('${t}')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
+           <div class="down-btn"> <button class="btns btn${t}dwn dwn" onclick="dwnbtn('${t}')"><i class="fa-solid fa-circle-chevron-up"></i></button></div>
         </div>`
     }
     document.querySelector('.block-buttons').insertAdjacentHTML("afterbegin",htmlfl)

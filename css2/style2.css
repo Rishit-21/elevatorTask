@@ -127,6 +127,9 @@ body {
   background-color: white;
   color: #005868;
 }
+.mainElevator .block-buttons .floor .dwn {
+  transform: rotate(180deg);
+}
 
 /* The switch - the box around the slider */
 .switch {

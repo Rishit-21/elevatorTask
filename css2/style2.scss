@@ -134,11 +134,16 @@ body{
                 background-color:  #005868;
                 color: white;
                font-size: 25px;
+          
                :active{
                 background-color:white;
                 color: #005868;
+               
             }
             }
+            .dwn{
+              transform: rotate(180deg);
+             }
         }
     }
 }
