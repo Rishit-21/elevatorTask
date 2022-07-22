@@ -38,7 +38,7 @@ const displaylifts = function(){
         <span class="slider round"></span>
         </label>
         </div>`
-    array.push({id:++ids,lift:t,checked:false,floor:1,moving:false})
+    array.push({id:++ids,lift:t,checked:false,floor:1,ismoving:false})
     document.querySelector('.mainElevator').insertAdjacentHTML("beforeend",html)
     }
     document.querySelector('.mainElevator').insertAdjacentHTML("beforeend",`<div class="block-buttons"></div>`)
@@ -84,112 +84,120 @@ displaylifts()
 
 
 const liftMovments = function(closest,i){
+    console.log(array)
     funcount++;
 
     let index = closest;
-    
+    if(array[index].ismoving==false){
         if(array[index].checked==false ){
+
           
-                let animation=null;
-                let animationDoors=null;
-                let marginbottom=Number(150*i)
-                let margintop=(liftheight-marginbottom)
-                var posbtm =Number(150*array[index].floor)  
-                var postop= liftheight-posbtm;
-                let n=array[index].floor
-                let mb=posbtm
-                let mbt=postop
-                let posl=0;
-                let posr=0;
-                let clposl=55
-                let clposr=55                                  
-                array[index].floor=i
-                let elee=document.getElementsByClassName(`el`)[array[index].id - 1]
-                clearInterval(animation)
-                animation=setInterval(frame, 5)
-                   function  frame () {
-                    if (postop == margintop) {
-                       elee.style.top=`${postop}px`
-                        document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
-                        document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
-                       
-                        clearInterval(animationDoors);
-                        animationDoors=setInterval(frame1,15);
-                        function frame1(){
-                            if(array[index].floor==i){
-                                if(posl==55 && posr==55){
-                                    clearInterval(animation)
-                                        if(clposl==0&& clposr==0){
-                                            clearInterval(animationDoors)
-                                        }
-                                        else{
-                                            clposl--
-                                        clposr--
-                                        
-                                        document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
-                                        document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
-                                        document.querySelector(`.el${array[index].id}`).style.opacity='0'
-                                    }
-                               
-                            }
-                            else{
-                                posl++;
-                                posr++;
-                               
-                                document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
-                                document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
-                                document.querySelector(`.el${array[index].id}`).style.opacity=`1`
-                            }
-                        }
-                    }
-                    if(postop==mbt){
-                        mbt-=150
-                        document.querySelector(`.el${array[index].id}`).value=n
-                        n++
-                    }
+            let animation=null;
+            let animationDoors=null;
+            let marginbottom=Number(150*i)
+            let margintop=(liftheight-marginbottom)
+            var posbtm =Number(150*array[index].floor)  
+            var postop= liftheight-posbtm;
+            let n=array[index].floor
+            let mb=posbtm
+            let mbt=postop
+            let posl=0;
+            let posr=0;
+            let clposl=55
+            let clposr=55                                  
+            array[index].floor=i
+            let elee=document.getElementsByClassName(`el`)[array[index].id - 1]
+            clearInterval(animation)
+            animation=setInterval(frame, 5)
+               function  frame () {
+                if (postop == margintop) {
+                   elee.style.top=`${postop}px`
+                    document.querySelector(`.rightDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
+                    document.querySelector(`.leftDoor${array[index].id}`).style.border=` solid rgb(83, 83, 83)`
                    
-                    clearInterval(animation)
-
-                } 
-                else {
-
-             
-
-                      if(postop > margintop){
-                          if(postop==mbt){
-                              mbt-=150
-                              document.querySelector(`.el${array[index].id}`).value=n
-                              n++
-                            }
-                            postop--; 
+                    clearInterval(animationDoors);
+                    animationDoors=setInterval(frame1,15);
+                    function frame1(){
+                        if(array[index].floor==i){
+                            if(posl==55 && posr==55){
+                                clearInterval(animation)
+                                    if(clposl==0&& clposr==0){
+                                        clearInterval(animationDoors)
+                                    }
+                                    else{
+                                        clposl--
+                                    clposr--
+                                    
+                                    document.querySelector(`.rightDoor${array[index].id}`).style.left=`${clposr}px`
+                                    document.querySelector(`.leftDoor${array[index].id}`).style.right=`${clposl}px`
+                                    document.querySelector(`.el${array[index].id}`).style.opacity='0'
+                                }
                            
-                            
-                            elee.style.top=`${postop}px`
-                            document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
-                            document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
                         }
                         else{
-                            if(postop==mbt){
-                                mbt+=150
-                                document.querySelector(`.el${array[index].id}`).value=n
-                                n--
-                            }
-                            postop++; 
-                                  
-                            elee.style.top=`${postop}px`
-                            document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
-                            document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
+                            posl++;
+                            posr++;
+                           
+                            document.querySelector(`.rightDoor${array[index].id}`).style.left=`${posr}px`
+                            document.querySelector(`.leftDoor${array[index].id}`).style.right=`${posl}px`
+                            document.querySelector(`.el${array[index].id}`).style.opacity=`1`
                         }
-           
-                        
                     }
+                }
+                if(postop==mbt){
+                    mbt-=150
+                    document.querySelector(`.el${array[index].id}`).value=n
+                    n++
+                }
+               array[index].ismoving=false
+                clearInterval(animation)
+
+            } 
+            else {
+                    array[index].ismoving=true
+         
+
+                  if(postop > margintop){
+                      if(postop==mbt){
+                          mbt-=150
+                          document.querySelector(`.el${array[index].id}`).value=n
+                          n++
+                        }
+                        postop--; 
+                       
+                        
+                        elee.style.top=`${postop}px`
+                        document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                        document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`
+                    }
+                    else{
+                        if(postop==mbt){
+                            mbt+=150
+                            document.querySelector(`.el${array[index].id}`).value=n
+                            n--
+                        }
+                        postop++; 
+                              
+                        elee.style.top=`${postop}px`
+                        document.querySelector(`.rightDoor${array[index].id}`).style.border=`solid green`
+                        document.querySelector(`.leftDoor${array[index].id}`).style.border=`solid green`                    
+                    }
+       
                     
                 }
-               
-            
-            
-        }   
-    
+                
+            }
+           
+        
+        
+    }   
+
+    }
+    else{
+       closest=closest+1
+        liftMovments(closest,i)
+    }
+      
 }
 
 const upbtn=function(i){
