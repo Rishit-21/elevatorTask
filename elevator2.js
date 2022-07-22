@@ -14,6 +14,12 @@ let htmlfl
 
 let array = [];
 
+let index
+let funcount=0;
+
+
+let moving;
+
 document.querySelector('.mainElevator').innerHTML=''
 let liftheight=Number((numfloor*150));
 let flheight =(numfloor*150);
@@ -64,11 +70,7 @@ const displaylifts = function(){
     document.querySelector(`.block-buttons`).insertAdjacentHTML("afterbegin",`<div class="maintenance"><span >MAINTENANCE</span></div>`)
 }
 displaylifts()
-let index
-let funcount=0;
 
-
-let moving;
 
 
     let closest= function(i){
