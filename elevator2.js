@@ -16,7 +16,7 @@ let array = [];
 
 let index
 let funcount=0;
-
+let cls
 
 let moving;
 
@@ -89,6 +89,7 @@ const liftMovments = function(closest,i){
 
     let index = closest;
     if(array[index].ismoving==false){
+        console.log(Math.trunc(Math.random()*closest))
         if(array[index].checked==false ){
 
           
@@ -186,16 +187,28 @@ const liftMovments = function(closest,i){
                     
                 }
                 
-            }
-           
-        
-        
+            }       
     }   
 
     }
     else{
-       closest=closest+1
-        liftMovments(closest,i)
+        if(cls==true){
+            if(closest=array.length-closest){
+                cls=false
+            }
+            closest=closest-1
+            liftMovments(closest,i)
+        }
+        else{
+            closest=closest+1
+            if(closest==array.length-1){
+                cls = true
+            }
+
+            liftMovments(closest,i)
+        }
+       
+        
     }
       
 }
